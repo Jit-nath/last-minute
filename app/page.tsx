@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <>
       <nav className="flex justify-between p-4 bg-muted">
-        <h1 className="text-3xl font-mono">title</h1>
+        <h1 className="text-3xl">Last Minute</h1>
         <div className="flex justify-between gap-2">
           <Button
             variant="default"
