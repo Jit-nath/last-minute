@@ -25,7 +25,8 @@ export default function VideoSidebar() {
         setVideos((prev) => [...prev, inputValue]);
         setInputValue("");
       } catch (e) {
-        toast.warning("Please enter a valid YouTube URL");
+        if (e as typeof Error)
+          toast.warning("Please enter a valid YouTube URL");
       }
     }
   };
