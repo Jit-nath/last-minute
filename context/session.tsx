@@ -1,22 +1,27 @@
 "use client";
 import React, { createContext, useContext, useState, ReactNode } from "react";
 
-interface Session {
+export interface Session {
   userId: string;
   userName: string;
-  videoLinks: string[] | null;
-  lastPlayed: string | null;
+  videoLinks: string[];
+  lastPlayed: string;
 }
 
 interface SessionContext {
-  sessionInfo: Session | null;
-  setSessionInfo: (sessionInfo: Session | null) => void;
+  sessionInfo: Session;
+  setSessionInfo: (sessionInfo: Session) => void;
 }
 
 const SessionContext = createContext<SessionContext | undefined>(undefined);
 
 export const SessionProvider = ({ children }: { children: ReactNode }) => {
-  const [sessionInfo, setSessionInfo] = useState<Session | null>(null);
+  const [sessionInfo, setSessionInfo] = useState<Session>({
+    userId: "",
+    userName: "",
+    videoLinks: [],
+    lastPlayed: "",
+  });
 
   return (
     <SessionContext.Provider value={{ sessionInfo, setSessionInfo }}>

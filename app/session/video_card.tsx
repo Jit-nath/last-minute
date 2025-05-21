@@ -33,9 +33,9 @@ export default function VideoCard({
 
   if (isCompact) {
     return (
-      <Card className="shadow hover:shadow-lg transition-shadow duration-200 rounded-lg py-0">
-        <CardContent className="flex items-center justify-between p-3">
-          <div className="flex items-center gap-3 flex-1 min-w-0">
+      <Card className="shadow hover:shadow-lg transition-shadow duration-200 rounded-lg py-0 bg-muted/50 hover:bg-muted">
+        <CardContent className="flex items-center justify-between p-3 ">
+          <div className="flex items-center gap-3 flex-1 min-w-0 ">
             <div className="relative w-16 h-12 rounded-md overflow-hidden bg-gray-200 flex-shrink-0">
               {thumbnail && (
                 <Image
@@ -68,7 +68,7 @@ export default function VideoCard({
   }
 
   return (
-    <Card className="flex flex-col px-2 space-y-3 shadow hover:shadow-lg transition rounded-lg py-2">
+    <Card className="flex flex-col px-2 space-y-3 shadow hover:shadow-lg transition rounded-lg py-2 bg-muted/50 hover:bg-muted">
       <CardContent className="relative p-0">
         <div className="relative w-full h-48 rounded-md overflow-hidden bg-gray-200">
           {thumbnail && (

@@ -7,11 +7,13 @@ import { CirclePlus, List, Rows2 } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 import { isYouTubeUrl } from "@/lib/youtube";
+import { useSession } from "@/context/session";
 
 export default function VideoSidebar() {
   const [videos, setVideos] = useState<string[]>([]);
   const [inputValue, setInputValue] = useState<string>("");
   const [layout, setLayout] = useState<"default" | "compact">("default");
+  const { sessionInfo, setSessionInfo } = useSession();
 
   const handleAddVideo = () => {
     if (inputValue.trim()) {
@@ -22,17 +24,34 @@ export default function VideoSidebar() {
         if (!isYouTubeUrl(inputValue)) {
           throw new Error("We only support YouTube videos");
         }
-        setVideos((prev) => [...prev, inputValue]);
+
+        // Create the new videos array
+        const newVideos = [...videos, inputValue];
+
+        setVideos(newVideos);
+        setSessionInfo({
+          ...sessionInfo,
+          videoLinks: newVideos,
+        });
+
         setInputValue("");
       } catch (e) {
-        if (e as typeof Error)
-          toast.warning("Please enter a valid YouTube URL");
+        toast.warning(
+          (e as Error).message || "Please enter a valid YouTube URL"
+        );
       }
     }
+    console.log(sessionInfo.videoLinks);
   };
 
   const handleRemoveVideo = (index: number) => {
-    setVideos((prev) => prev.filter((_, i) => i !== index));
+    const newVideos = videos.filter((_, i) => i !== index);
+    setVideos(newVideos);
+    setSessionInfo({
+      ...sessionInfo,
+      videoLinks: newVideos,
+    });
+    console.log(sessionInfo.videoLinks);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -42,21 +61,22 @@ export default function VideoSidebar() {
   };
 
   return (
-    <div className="flex flex-col h-full bg-muted ">
-      <div className="flex gap-2 w-full bg-muted  p-2">
+    <div className="flex flex-col h-full ">
+      <div className="flex gap-2 w-full py-2 ">
         <Input
           placeholder="Paste video link"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           onKeyDown={handleKeyDown}
+          className="bg-card"
         />
-        <Button className="rounded-sm cursor-pointer" onClick={handleAddVideo}>
+        <Button className="rounded-lg cursor-pointer" onClick={handleAddVideo}>
           <CirclePlus />
         </Button>
       </div>
 
-      <div className="flex justify-between w-full px-2">
-        <span className="text-sm font-medium">
+      <div className="flex justify-between w-full pl-1">
+        <span className="text-sm font-medium mt-1">
           {videos.length} video{videos.length !== 1 ? "s" : ""}
         </span>
         <Button
