@@ -1,5 +1,4 @@
 "use client";
-import VideoSidebar from "./videoSidebar";
 import { useSession } from "@/context/session";
 import {
   Sidebar,
@@ -41,7 +40,7 @@ export default function Session() {
     <>
       <Sidebar variant="inset">
         <SidebarContent className="p-2 ">
-          <DraggableVideoSidebar/>
+          <DraggableVideoSidebar />
         </SidebarContent>
       </Sidebar>
       <SidebarInset>
