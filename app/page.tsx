@@ -1,6 +1,5 @@
 "use client";
 import { Button } from "@/components/ui/button";
-
 import { useRouter } from "next/navigation";
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import ThemeSwitch from "@/components/themeSwitch";
@@ -43,7 +42,7 @@ export default function Home() {
         </Button>
       </main>
       <footer
-        className="fixed bottom-0 left-0 w-full h-8 bg-muted backdrop-blur-sm"
+        className="fixed bottom-0 left-0 w-full h-8 bg-muted backdrop-blur-sm flex items-center px-2"
         style={{ zIndex: 50 }}
       >
         <ThemeSwitch />

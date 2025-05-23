@@ -48,9 +48,7 @@ export default function VideoCard({
               )}
             </div>
             <div className="flex-1 min-w-0">
-              <div className="text-sm font-medium text-white leading-tight">
-                {title}
-              </div>
+              <div className="text-sm font-medium leading-tight">{title}</div>
             </div>
           </div>
           <Button

@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import ThemeSwitch from "@/components/themeSwitch";
+import DraggableVideoSidebar from "./videoCardSortingSidebar";
 
 export default function Session() {
   const { sessionInfo, setSessionInfo } = useSession();
@@ -40,7 +41,7 @@ export default function Session() {
     <>
       <Sidebar variant="inset">
         <SidebarContent className="p-2 ">
-          <VideoSidebar />
+          <DraggableVideoSidebar/>
         </SidebarContent>
       </Sidebar>
       <SidebarInset>
