@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import {
   DndContext,
@@ -8,9 +7,7 @@ import {
   PointerSensor,
   useSensor,
   useSensors,
-  DragOverlay,
   type DragEndEvent,
-  type DragStartEvent,
 } from "@dnd-kit/core";
 import {
   arrayMove,
@@ -113,7 +110,9 @@ function SortableVideoCard({
                 )}
               </div>
               <div className="flex-1 min-w-0">
-                <div className="text-sm font-medium leading-tight">{title}</div>
+                <div className="text-sm font-medium leading-tight cursor-pointer">
+                  {title}
+                </div>
               </div>
             </div>
             <Button
@@ -164,7 +163,7 @@ function SortableVideoCard({
             size="sm"
             onClick={onRemove}
             aria-label="Remove video"
-            className="absolute top-2 right-2 hover:text-red-600"
+            className="absolute -top-1 -right-1 hover:text-red-600"
           >
             <Trash2 className="w-5 h-5" />
           </Button>
@@ -174,96 +173,11 @@ function SortableVideoCard({
   );
 }
 
-function VideoCardOverlay({
-  link,
-  layout,
-}: {
-  link: string;
-  layout: "default" | "compact";
-}) {
-  const [title, setTitle] = useState<string>("Loading...");
-  const [thumbnail, setThumbnail] = useState<string>("");
-
-  useEffect(() => {
-    async function load() {
-      const fetchedTitle = await Title(link);
-      const fetchedThumb = Thumb(link);
-      setTitle(fetchedTitle || "Untitled");
-      setThumbnail(fetchedThumb || "");
-    }
-    load();
-  }, [link]);
-
-  const isCompact = layout === "compact";
-
-  if (isCompact) {
-    return (
-      <Card className="shadow hover:shadow-lg transition-shadow duration-200 rounded-lg py-0 bg-muted/50 hover:bg-muted">
-        <CardContent className="flex items-center justify-between p-3">
-          <div className="flex items-center gap-3 flex-1 min-w-0">
-            <div className="flex-shrink-0">
-              <GripVertical className="h-4 w-4 text-gray-400" />
-            </div>
-            <div className="relative w-16 h-12 rounded-md overflow-hidden bg-gray-200 flex-shrink-0">
-              {thumbnail && (
-                <Image
-                  src={thumbnail}
-                  alt={title}
-                  fill
-                  className="object-cover"
-                  sizes="64px"
-                />
-              )}
-            </div>
-            <div className="flex-1 min-w-0">
-              <div className="text-sm font-medium leading-tight">{title}</div>
-            </div>
-          </div>
-          <Button
-            variant="ghost"
-            size="icon"
-            aria-label="Remove video"
-            className="flex-shrink-0 ml-2 hover:text-red-600"
-          >
-            <Trash2 className="w-4 h-4" />
-          </Button>
-        </CardContent>
-      </Card>
-    );
-  }
-
-  return (
-    <Card className="flex flex-col px-2 space-y-3 shadow hover:shadow-lg transition rounded-lg py-2 bg-muted/50 hover:bg-muted">
-      <CardContent className="relative p-0">
-        <div className="flex items-start gap-2 mb-2">
-          <div className="mt-1">
-            <GripVertical className="h-4 w-4 text-gray-400" />
-          </div>
-        </div>
-        <div className="relative w-full h-48 rounded-md overflow-hidden bg-gray-200">
-          {thumbnail && (
-            <Image src={thumbnail} alt={title} fill className="object-cover" />
-          )}
-        </div>
-        <div className="mt-2 text-lg font-semibold">{title}</div>
-        <Button
-          variant="ghost"
-          size="sm"
-          aria-label="Remove video"
-          className="absolute top-2 right-2 hover:text-red-600"
-        >
-          <Trash2 className="w-5 h-5" />
-        </Button>
-      </CardContent>
-    </Card>
-  );
-}
-
 export default function DraggableVideoSidebar() {
   const [videos, setVideos] = useState<VideoItem[]>([]);
   const [inputValue, setInputValue] = useState<string>("");
   const [layout, setLayout] = useState<"default" | "compact">("default");
-  const [activeId, setActiveId] = useState<string | null>(null);
+
   const { sessionInfo, setSessionInfo } = useSession();
 
   const sensors = useSensors(
@@ -331,10 +245,6 @@ export default function DraggableVideoSidebar() {
     }
   };
 
-  function handleDragStart(event: DragStartEvent) {
-    setActiveId(event.active.id as string);
-  }
-
   function handleDragEnd(event: DragEndEvent) {
     const { active, over } = event;
 
@@ -355,13 +265,7 @@ export default function DraggableVideoSidebar() {
         return newVideos;
       });
     }
-
-    setActiveId(null);
   }
-
-  const activeVideo = activeId
-    ? videos.find((video) => video.id === activeId)
-    : null;
 
   return (
     <div className="flex flex-col h-full">
@@ -404,7 +308,6 @@ export default function DraggableVideoSidebar() {
             <DndContext
               sensors={sensors}
               collisionDetection={closestCenter}
-              onDragStart={handleDragStart}
               onDragEnd={handleDragEnd}
               modifiers={[restrictToVerticalAxis, restrictToParentElement]}
             >
@@ -422,12 +325,6 @@ export default function DraggableVideoSidebar() {
                   />
                 ))}
               </SortableContext>
-
-              <DragOverlay>
-                {activeVideo ? (
-                  <VideoCardOverlay link={activeVideo.link} layout={layout} />
-                ) : null}
-              </DragOverlay>
             </DndContext>
           </div>
         ) : (
