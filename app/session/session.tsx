@@ -1,5 +1,4 @@
 "use client";
-import { useSession } from "@/context/session";
 import {
   Sidebar,
   SidebarContent,
@@ -7,8 +6,6 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 import { Separator } from "@radix-ui/react-separator";
-import { useUser } from "@clerk/nextjs";
-import { useEffect } from "react";
 import type { Session } from "@/context/session";
 import {
   Dialog,
@@ -23,19 +20,6 @@ import ThemeSwitch from "@/components/themeSwitch";
 import DraggableVideoSidebar from "./videoCardSortingSidebar";
 
 export default function Session() {
-  const { sessionInfo, setSessionInfo } = useSession();
-  const { user } = useUser();
-
-  useEffect(() => {
-    if (user && setSessionInfo) {
-      setSessionInfo({
-        ...sessionInfo,
-        userId: user.id,
-        userName: user.firstName || "",
-      });
-    }
-  }, [user]);
-
   return (
     <>
       <Sidebar variant="inset">
