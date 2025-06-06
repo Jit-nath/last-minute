@@ -15,7 +15,7 @@ export default function VideoPlayer({
   if (!embedUrl) {
     return (
       <div
-        className={`flex items-center justify-center bg-gray-100 dark:bg-gray-800 rounded-lg ${className}`}
+        className={`flex items-center justify-center bg-muted rounded-lg ${className}`}
       >
         <div className="text-center p-8">
           <p className="text-gray-500 dark:text-gray-400">No video selected</p>

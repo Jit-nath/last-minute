@@ -32,12 +32,24 @@ export default function Session() {
       </Sidebar>
       <SidebarInset>
         <Dialog>
-          <header className="flex h-16 shrink-0 items-center gap-2 px-4 justify-between">
+          <header
+            className="flex h-16 shrink-0 items-center gap-2 px-4 justify-between bg-muted"
+            style={{
+              borderTopLeftRadius: "0.7rem",
+              borderTopRightRadius: "0.7rem",
+            }}
+          >
+            <style jsx>{`
+              @media (max-width: 640px) {
+                header {
+                  border-top-left-radius: 0rem !important;
+                  border-top-right-radius: 0rem !important;
+                }
+              }
+            `}</style>
+
             <SidebarTrigger />
-            <Separator
-              orientation="vertical"
-              className="mr-2 data-[orientation=vertical]:h-4"
-            />
+
             <div className="flex">
               <div className="mr-3 flex justify-center align-middle items-center w-9 h-9">
                 <ThemeSwitch />
