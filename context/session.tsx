@@ -1,7 +1,7 @@
 "use client";
 import React, { createContext, useContext, useState, ReactNode } from "react";
 
-export interface Session {
+export interface SessionType {
   userId: string;
   userName: string;
   videoLinks: string[];
@@ -9,14 +9,14 @@ export interface Session {
 }
 
 interface SessionContext {
-  sessionInfo: Session;
-  setSessionInfo: (sessionInfo: Session) => void;
+  sessionInfo: SessionType;
+  setSessionInfo: (sessionInfo: SessionType) => void;
 }
 
 const SessionContext = createContext<SessionContext | undefined>(undefined);
 
 export const SessionProvider = ({ children }: { children: ReactNode }) => {
-  const [sessionInfo, setSessionInfo] = useState<Session>({
+  const [sessionInfo, setSessionInfo] = useState<SessionType>({
     userId: "",
     userName: "",
     videoLinks: [],

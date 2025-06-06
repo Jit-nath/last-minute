@@ -40,8 +40,17 @@ export async function Description(url: string): Promise<string | null> {
     }
 }
 
+export function getYouTubeVideoId(url: string): string | null {
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+  const match = url.match(regExp);
+  return match && match[2].length === 11 ? match[2] : null;
+}
+
+export function getYouTubeEmbedUrl(url: string): string | null {
+  const videoId = getYouTubeVideoId(url);
+  return videoId ? `https://www.youtube-nocookie.com/embed/${videoId}` : null;
+}
+
 export function isYouTubeUrl(url: string): boolean {
-    const regex =
-        /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+$/;
-    return regex.test(url);
+  return /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)/.test(url);
 }
