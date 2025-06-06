@@ -22,7 +22,7 @@ export function SortableVideoCard({
     isDragging,
   } = useSortable({ id });
 
-  const { title, thumbnail, isLoading, error } = useVideoData(link);
+  const { title, thumbnail, error } = useVideoData(link);
   const { sessionInfo, setSessionInfo } = useSession();
 
   const style = {

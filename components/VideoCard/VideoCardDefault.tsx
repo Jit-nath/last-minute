@@ -7,7 +7,7 @@ interface VideoCardDefaultProps {
   title: string;
   thumbnail: string;
   onRemove: () => void;
-  dragHandleProps: any;
+  dragHandleProps: React.HTMLAttributes<HTMLDivElement>;
   style: React.CSSProperties;
   isDragging: boolean;
   onCardClick: () => void;

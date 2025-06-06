@@ -14,6 +14,7 @@ import type { VideoItem, LayoutType } from "@/types/video";
 interface VideoListProps {
   videos: VideoItem[];
   layout: LayoutType;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   sensors: any[];
   onDragEnd: (event: DragEndEvent) => void;
   onRemoveVideo: (id: string) => void;

@@ -10,6 +10,7 @@ import { VideoControls } from "@/components/VideoControls/VideoControls";
 import { VideoList } from "@/components/VideoList/VideoList";
 //types
 import type { LayoutType } from "@/types/video";
+import type { DragEndEvent } from "@dnd-kit/core";
 
 export default function VideoSidebar() {
   const [layout, setLayout] = useState<LayoutType>("default");
@@ -26,7 +27,7 @@ export default function VideoSidebar() {
 
   const { sensors, handleDragEnd } = useDragAndDrop();
 
-  const onDragEnd = (event: any) => {
+  const onDragEnd = (event: DragEndEvent) => {
     handleDragEnd(event, videos, handleReorderVideos);
   };
 

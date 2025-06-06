@@ -7,7 +7,7 @@ import type { SortableVideoCardProps } from "@/types/video";
 interface VideoCardCompactProps extends Omit<SortableVideoCardProps, "layout"> {
   title: string;
   thumbnail: string;
-  dragHandleProps: any;
+  dragHandleProps: React.HTMLAttributes<HTMLDivElement>;
   style: React.CSSProperties;
   isDragging: boolean;
   onCardClick: () => void;
