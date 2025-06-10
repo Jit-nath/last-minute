@@ -1,8 +1,7 @@
-// app/layout.tsx (or wherever your root layout lives)
-
+"use client";
 import { Geist_Mono } from "next/font/google";
-import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
+import { SessionProvider } from "next-auth/react";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -15,12 +14,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
+    <SessionProvider>
       <html lang="en">
-        <body className={`${geistMono.variable} antialiased`}>
-          {children}
-        </body>
+        <body className={`${geistMono.variable} antialiased`}>{children}</body>
       </html>
-    </ClerkProvider>
+    </SessionProvider>
   );
 }
