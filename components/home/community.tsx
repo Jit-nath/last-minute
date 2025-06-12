@@ -19,6 +19,16 @@ const mock: sessionCardType[] = [
       "https://img.youtube.com/vi/8XwUYCj4lGc/maxresdefault.jpg",
       "https://img.youtube.com/vi/8XwUYCj4lGc/maxresdefault.jpg",
     ],
+    title: "video2",
+    description: "description2",
+  },
+  {
+    thumb: [
+      "https://img.youtube.com/vi/8XwUYCj4lGc/maxresdefault.jpg",
+      "https://img.youtube.com/vi/8XwUYCj4lGc/maxresdefault.jpg",
+      "https://img.youtube.com/vi/8XwUYCj4lGc/maxresdefault.jpg",
+      "https://img.youtube.com/vi/8XwUYCj4lGc/maxresdefault.jpg",
+    ],
     title: "video3",
     description: "description3",
   },
@@ -54,32 +64,17 @@ const mock: sessionCardType[] = [
   },
 ];
 
-const Featured = () => {
+const Community = () => {
   return (
-    <div>
-      <div className="text-xl sm:ml-12 mt-5 mb-0">Featured</div>
-
-      <div className="overflow-x-auto overflow-y-hidden scroll-smooth scrollbar-hide">
-        <div className="flex gap-4 px-4 sm:px-16 py-4 min-w-max">
-          {mock.map((item, idx) => (
-            <div key={idx} className="flex-shrink-0">
-              <SessionCard {...item} />
-            </div>
-          ))}
-        </div>
+    <div className="p-4">
+      <h1 className="text-xl mb-6 ml-7">Community</h1>
+      <div className="grid  grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:ml-10">
+        {mock.map((item, idx) => (
+          <SessionCard key={`session-${idx}`} {...item} />
+        ))}
       </div>
-
-      <style jsx>{`
-        .scrollbar-hide {
-          -ms-overflow-style: none; /* Internet Explorer 10+ */
-          scrollbar-width: none; /* Firefox */
-        }
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none; /* Safari and Chrome */
-        }
-      `}</style>
     </div>
   );
 };
 
-export default Featured;
+export default Community;
