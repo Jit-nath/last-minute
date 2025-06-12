@@ -5,9 +5,9 @@ import { useState } from "react";
 import { useDragAndDrop } from "@/hooks/useDragAndDrop";
 import { useVideoManager } from "@/hooks/useVideoManager";
 // components
-import { VideoInput } from "@/components/VideoInput/VideoInput";
-import { VideoControls } from "@/components/VideoControls/VideoControls";
-import { VideoList } from "@/components/VideoList/VideoList";
+import { VideoInput } from "@/components/session/VideoInput/VideoInput";
+import { VideoControls } from "@/components/session/VideoControls/VideoControls";
+import { VideoList } from "@/components/session/VideoList/VideoList";
 //types
 import type { LayoutType } from "@/types/video";
 import type { DragEndEvent } from "@dnd-kit/core";

@@ -7,41 +7,27 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
-import { MoreVertical } from "lucide-react";
+import { MoreVertical, ArrowDownToLine, Share2 } from "lucide-react";
+import { sessionCardType } from "@/types/session-card-type";
 
-interface SessionCardProps {
-  title: string;
-  description: string;
-  images: string[];
-}
-
-export function SessionCard({
-  title = "Session Title",
-  description = "This is a brief description of the session.",
-  images = [
-    "./thumbnail.jpg",
-    "./thumbnail.jpg",
-    "./thumbnail.jpg",
-    "./thumbnail.jpg",
-  ],
-}: Partial<SessionCardProps>) {
+function SessionCard({ thumb, title, description }: sessionCardType) {
   return (
-    <Card className="w-full max-w-md overflow-hidden rounded-2xl shadow-lg border border-muted bg-background">
+    <Card className="w-full max-w-xs overflow-hidden rounded-2xl shadow-lg border border-muted bg-muted py-0">
       {/* Image Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-[1px] bg-muted/20">
-        {images.slice(0, 4).map((img, idx) => (
+      <div className="grid grid-cols-2 bg-muted/20">
+        {thumb.slice(0, 4).map((img, idx) => (
           <div key={idx} className="aspect-video overflow-hidden">
             <img
               src={img}
               alt={`Thumbnail ${idx + 1}`}
-              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              className="w-full h-full object-cover"
             />
           </div>
         ))}
       </div>
 
       {/* Text & Actions */}
-      <div className="flex items-start justify-between px-4 py-3">
+      <div className="flex items-start justify-between pl-4 pr-3 pb-4 ">
         <div>
           <h3 className="text-base font-semibold leading-tight">{title}</h3>
           <p className="text-sm text-muted-foreground">{description}</p>
@@ -53,8 +39,14 @@ export function SessionCard({
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuItem>Save</DropdownMenuItem>
-            <DropdownMenuItem>Open</DropdownMenuItem>
+            <DropdownMenuItem>
+              <ArrowDownToLine />
+              Save
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <Share2 />
+              Share
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>

@@ -16,7 +16,7 @@ import {
 import { Button } from "@/components/ui/button";
 import ThemeSwitch from "@/components/themeSwitch";
 import VideoSidebar from "./VideoSidebar";
-import VideoPlayer from "@/components/VideoPlayer/VideoPlayer";
+import VideoPlayer from "@/components/session/VideoPlayer/VideoPlayer";
 import { useSession } from "@/context/session";
 
 export default function Session() {

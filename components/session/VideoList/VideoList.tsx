@@ -8,7 +8,7 @@ import {
   restrictToParentElement,
 } from "@dnd-kit/modifiers";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { SortableVideoCard } from "@/components/VideoCard/SortableVideoCard";
+import { SortableVideoCard } from "@/components/session/VideoCard/SortableVideoCard";
 import type { VideoItem, LayoutType } from "@/types/video";
 
 interface VideoListProps {
