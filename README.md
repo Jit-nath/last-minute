@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Last-Minute
 
-## Getting Started
+A web application to create, organize, and share YouTube video playlists with notes and AI-powered learning support.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+* **Playlist Management**
+  Create playlists of YouTube videos. Easily arrange or rearrange the order of videos to optimize your learning flow.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+* **Interactive Notes**
+  Take notes directly in the app. Upload note files or type them in, and attach them to specific videos or playlists.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+* **AI Bot for Transcript-Based Learning**
+  Boost your learning with an AI assistant that parses video transcripts and helps you understand the content faster.
 
-## Learn More
+* **Sharing & Collaboration**
+  Share your playlists and notes with friends—collaboration made easy.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Tech Stack & Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+* Built with **Next.js** (bootstrapped using create-next-app) ([GitHub][1])
+* Language: **TypeScript** (\~94%) and **CSS** (\~5%) ([GitHub][1])
+* Key directories:
 
-## Deploy on Vercel
+  * `app/`, `components/`, `hooks/`, `lib/`, `context/`, `db/`, `types/`
+  * `public/` for static assets
+* Dev setup includes: `Dockerfile`, `docker-compose.yml`
+* Configuration files for eslint, Tailwind CSS, Drizzle ORM, etc.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Getting Started (Windows)
+
+**Prerequisites:**
+Ensure you have Node.js and a package manager (npm, yarn, or pnpm) installed.
+
+1. Clone the repository:
+
+   ```powershell
+   git clone https://github.com/Jit-nath/last-minute.git
+   cd last-minute
+   ```
+2. Install dependencies:
+
+   ```powershell
+   npm install
+   ```
+
+   (Or use `yarn` or `pnpm install`)
+3. Run the development server:
+
+   ```powershell
+   npm run dev
+   ```
+4. Open your browser and navigate to:
+   `http://localhost:3000`
+
+---
+
+### Usage Overview
+
+* **Create & Manage Playlists:** Add YouTube videos, drag-and-drop to reorder.
+* **Notes & File Upload:** Write notes or attach files tied to videos/playlists.
+* **AI Helper:** Click or ask questions—AI explains video transcripts for quick learning.
+* **Share & Collaborate:** Generate shareable links for friends to view playlists and notes.
+
+---
+
+### Contributing
+
+* Fork the repo and create a feature branch
+* Make your changes, then submit a pull request
+
+Optionally, submit issues or enhancement ideas—you’re welcome!
+
+---
+
+### Contact
+
+Built by *Jit-nath*. Want to collaborate or chat? Drop a message at \[jit.nathdeb@gmail.com].
+
+
