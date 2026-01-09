@@ -15,6 +15,13 @@
       "when": 1767936800561,
       "tag": "0001_tiresome_apocalypse",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1767942173904,
+      "tag": "0002_petite_gladiator",
+      "breakpoints": true
     }
   ]
 }

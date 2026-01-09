@@ -255,11 +255,7 @@ export default function Session({
               />
               <div className="flex-1 bg-muted/50 rounded-xl overflow-hidden border">
                 <div className="h-full overflow-y-auto">
-                  {/* Temporarily disabled for testing */}
-                  {/* <SavedLinksList sessionId={sessionId} readOnly={isReadOnly} /> */}
-                  <div className="p-4 text-center text-gray-500">
-                    Saved links temporarily disabled
-                  </div>
+                  <SavedLinksList sessionId={sessionId} readOnly={isReadOnly} />
                 </div>
               </div>
             </div>
