@@ -50,13 +50,20 @@ export default function VideoSidebar() {
         onLayoutToggle={toggleLayout}
       />
 
-      <VideoList
-        videos={videos}
-        layout={layout}
-        sensors={sensors}
-        onDragEnd={onDragEnd}
-        onRemoveVideo={handleRemoveVideo}
-      />
+      <div className="flex-1 min-h-0 mt-2">
+        {/* Temporarily disabled to test - VideoList
+        <VideoList
+          videos={videos}
+          layout={layout}
+          sensors={sensors}
+          onDragEnd={onDragEnd}
+          onRemoveVideo={handleRemoveVideo}
+        />
+        */}
+        <div className="text-center text-gray-500 p-4">
+          Video list temporarily disabled for testing
+        </div>
+      </div>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import * as React from "react";
+import Image from "next/image";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
@@ -16,11 +17,12 @@ function SessionCard({ thumb, title, description }: sessionCardType) {
       {/* Image Grid */}
       <div className="grid grid-cols-2 bg-muted/20">
         {thumb.slice(0, 4).map((img, idx) => (
-          <div key={idx} className="aspect-video overflow-hidden">
-            <img
+          <div key={idx} className="relative aspect-video overflow-hidden">
+            <Image
               src={img}
               alt={`Thumbnail ${idx + 1}`}
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
             />
           </div>
         ))}

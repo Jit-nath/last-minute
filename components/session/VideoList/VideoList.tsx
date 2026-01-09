@@ -7,7 +7,6 @@ import {
   restrictToVerticalAxis,
   restrictToParentElement,
 } from "@dnd-kit/modifiers";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { SortableVideoCard } from "@/components/session/VideoCard/SortableVideoCard";
 import type { VideoItem, LayoutType } from "@/types/video";
 
@@ -29,16 +28,16 @@ export function VideoList({
 }: VideoListProps) {
   if (videos.length === 0) {
     return (
-      <ScrollArea className="h-full w-full mt-2 overflow-y-auto">
+      <div className="h-full w-full overflow-auto">
         <div className="text-center text-gray-500 p-4 flex items-center justify-center h-32">
           No videos added yet
         </div>
-      </ScrollArea>
+      </div>
     );
   }
 
   return (
-    <ScrollArea className="h-full w-full mt-2 overflow-y-auto">
+    <div className="h-full w-full overflow-auto">
       <div className="space-y-1">
         <DndContext
           sensors={sensors}
@@ -62,6 +61,6 @@ export function VideoList({
           </SortableContext>
         </DndContext>
       </div>
-    </ScrollArea>
+    </div>
   );
 }

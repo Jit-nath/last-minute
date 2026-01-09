@@ -1,0 +1,17 @@
+$ next lint
+
+./app/profile/page.tsx
+41:11  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./components/home/navbar.tsx
+36:13  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./components/home/session-card.tsx
+20:13  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./components/session/session.tsx
+44:6  Warning: React Hook useEffect has an unnecessary dependency: 'divref.current'. Either exclude it or remove the dependency array. Mutable values like 'divref.current' aren't valid dependencies because mutating them doesn't re-render the component.  react-hooks/exhaustive-deps
+134:7  Error: 'rightMenu' is assigned a value but never used.  @typescript-eslint/no-unused-vars     
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules
+error: script "lint" exited with code 1
